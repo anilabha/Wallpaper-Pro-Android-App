@@ -1,2 +1,4 @@
 # Wallpaper_App_Android
- Wallpaper_App for Android using pexel api
+ Wallpaper App for Android using pexel api
+ api link : https://www.pexels.com/api/
+ 
