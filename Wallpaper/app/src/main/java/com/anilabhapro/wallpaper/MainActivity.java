@@ -7,14 +7,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -39,18 +44,20 @@ public class MainActivity extends AppCompatActivity {
     WallpaperAdapter wallpaperAdapter;
     List<WallpaperModel> wallpaperModelList;
     int pageNumber = 1;
-    String query="Nature Technology";
+    String query = "Mobile hd wallpaper";
 
     Boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
-    String url1 = "https://api.pexels.com/v1/curated/?page=" + pageNumber + "&per_page=80";
-    String url = "https://api.pexels.com/v1/search/?page="+pageNumber+"&per_page=80&query="+query;
+    // String url = "https://api.pexels.com/v1/curated/?page=" + pageNumber + "&per_page=80";
+    String url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         recyclerView = findViewById(R.id.recyclerView);
         wallpaperModelList = new ArrayList<>();
@@ -95,11 +102,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fetchWallpaper() {
+        ProgressDialog pro = new ProgressDialog(this);
+        pro.setMessage("Loding....");
+        pro.show();
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        pro.dismiss();
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -153,4 +164,123 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+//        if (id == R.id.nav_search) {
+//
+//            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+//            final EditText editText = new EditText(this);
+//            editText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//
+//            alert.setMessage("Enter Category Example : Nature");
+//            alert.setTitle("Search Wallpaper");
+//
+//            alert.setView(editText);
+//
+//
+//            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//
+//
+//                    String query = editText.getText().toString();
+//
+//                    if (query.isEmpty() == false) {
+//
+//                        url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
+//                        wallpaperModelList.clear();
+//                        fetchWallpaper();
+//                    } else {
+//                        Toast.makeText(getApplicationContext(), "Please Give a Search input!", Toast.LENGTH_SHORT).show();
+//
+//                    }
+//
+//
+//                }
+//            });
+//
+//
+//            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                }
+//            });
+//
+//            alert.show();
+//
+//
+//        }
+        if (id == R.id.info) {
+            startActivity(new Intent(MainActivity.this, Info.class));
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder
+                = new AlertDialog
+                .Builder(MainActivity.this);
+
+        builder.setMessage("Do you want to exit ?");
+
+
+        builder.setCancelable(false);
+
+        // Set the positive button with yes name
+        // OnClickListener method is use of
+        // DialogInterface interface.
+
+        builder
+                .setPositiveButton(
+                        "Yes",
+                        new DialogInterface
+                                .OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+
+                                finish();
+                            }
+                        });
+
+        builder
+                .setNegativeButton(
+                        "No",
+                        new DialogInterface
+                                .OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+
+                                // If user click no
+                                // then dialog box is canceled.
+                                dialog.cancel();
+                            }
+                        });
+
+        // Create the Alert dialog
+        AlertDialog alertDialog = builder.create();
+
+        // Show the Alert Dialog box
+        alertDialog.show();
+    }
 }
+
+

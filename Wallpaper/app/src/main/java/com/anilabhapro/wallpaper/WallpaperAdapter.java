@@ -1,5 +1,6 @@
 package com.anilabhapro.wallpaper;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -21,17 +22,17 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
 
     private Context context;
     private List<WallpaperModel> wallpaperModelList;
-    ProgressBar p;
 
     public WallpaperAdapter(Context context, List<WallpaperModel> wallpaperModelList) {
         this.context = context;
         this.wallpaperModelList = wallpaperModelList;
     }
 
+
     @NonNull
     @Override
     public WallpaperViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view = LayoutInflater.from(context).inflate(R.layout.image_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.image_item, parent, false);
         return new WallpaperViewHolder(view);
     }
 
@@ -42,11 +43,12 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
+
             public void onClick(View view) {
 
 
-                context.startActivity(new Intent(context,FullScreenWallpaper.class)
-                .putExtra("originalUrl",wallpaperModelList.get(position).getOriginalUrl()));
+                context.startActivity(new Intent(context, FullScreenWallpaper.class)
+                        .putExtra("originalUrl", wallpaperModelList.get(position).getOriginalUrl()));
 
 
             }
@@ -58,10 +60,12 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
         return wallpaperModelList.size();
     }
 }
-class WallpaperViewHolder extends RecyclerView.ViewHolder{
+
+class WallpaperViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
+
     public WallpaperViewHolder(@NonNull View itemView) {
         super(itemView);
-        imageView=itemView.findViewById(R.id.imageViewItem);
+        imageView = itemView.findViewById(R.id.imageViewItem);
     }
 }
