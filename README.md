@@ -1,4 +1,4 @@
-# Wallpaper_App_Android
+# Wallpaper XP
  Wallpaper App for Android using pexel api.
  # PlayStore : https://play.google.com/store/apps/details?id=com.anilabhapro.wallpaper
  # api link : https://www.pexels.com/api/
