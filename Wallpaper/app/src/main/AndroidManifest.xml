@@ -12,9 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Info"></activity>
+        <activity android:name=".Cat5"></activity>
+        <activity android:name=".Cat4" />
+        <activity android:name=".Cat3" />
+        <activity android:name=".Cat2" />
+        <activity android:name=".cat1" />
+        <activity android:name=".Info" />
         <activity android:name=".FullScreenWallpaper" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

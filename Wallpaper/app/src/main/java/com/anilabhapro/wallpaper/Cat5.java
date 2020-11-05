@@ -1,5 +1,6 @@
 package com.anilabhapro.wallpaper;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -38,13 +39,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class Cat5 extends AppCompatActivity {
 
     RecyclerView recyclerView;
     WallpaperAdapter wallpaperAdapter;
     List<WallpaperModel> wallpaperModelList;
     int pageNumber = 1;
-    String query = "Mobile hd wallpaper";
+    String query = "Animal";
 
     Boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
@@ -99,7 +100,20 @@ public class MainActivity extends AppCompatActivity {
 
         fetchWallpaper();
 
+
+        getSupportActionBar().setTitle("Animal Wallpaper");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     public void fetchWallpaper() {
         ProgressDialog pro = new ProgressDialog(this);
@@ -160,163 +174,9 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(request);
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-//        if (id == R.id.nav_search) {
-//
-//            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-//            final EditText editText = new EditText(this);
-//            editText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//
-//            alert.setMessage("Enter Category Example : Nature");
-//            alert.setTitle("Search Wallpaper");
-//
-//            alert.setView(editText);
-//
-//
-//            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//
-//
-//                    String query = editText.getText().toString();
-//
-//                    if (query.isEmpty() == false) {
-//
-//                        url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
-//                        wallpaperModelList.clear();
-//                        fetchWallpaper();
-//                    } else {
-//                        Toast.makeText(getApplicationContext(), "Please Give a Search input!", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//
-//
-//                }
-//            });
-//
-//
-//            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                }
-//            });
-//
-//            alert.show();
-//
-//
-//        }
-        if (id == R.id.info) {
-            startActivity(new Intent(MainActivity.this, Info.class));
-
-            return true;
-        }
-        else if (id == R.id.Share){
-            Intent myintent = new Intent(Intent.ACTION_SEND);
-            myintent.setType("text/plan");
-
-            String shereBoday = "Your Apps are Here";
-
-            String shereSub ="Hey, I hope you are doing well. Here is our new Wallpaper app Wallpaper Pro. Try this app and set an attractive wallpaper in your Mobile! \n\nLink: "+ "http://play.google.com/store/apps/details?id=" + getPackageName();
-            myintent.putExtra(Intent.EXTRA_SUBJECT, shereBoday);
-            myintent.putExtra(Intent.EXTRA_TEXT, shereSub);
-            startActivity(Intent.createChooser(myintent, "Share Using"));
-        }
-        else if (id==R.id.cat1){
-            startActivity(new Intent(MainActivity.this, cat1.class));
-
-
-        }
-        else if (id==R.id.cat2){
-            startActivity(new Intent(MainActivity.this, Cat2.class));
-
-
-        }
-        else if (id==R.id.cat3){
-            startActivity(new Intent(MainActivity.this, Cat3.class));
-
-
-        }
-        else if (id==R.id.cat4){
-            startActivity(new Intent(MainActivity.this, Cat4.class));
-
-
-        }
-        else if (id==R.id.cat5){
-            startActivity(new Intent(MainActivity.this, Cat5.class));
-
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void onBackPressed() {
-
-        AlertDialog.Builder builder
-                = new AlertDialog
-                .Builder(MainActivity.this);
-
-        builder.setMessage("Do you want to exit ?");
-
-
-        builder.setCancelable(false);
-
-        // Set the positive button with yes name
-        // OnClickListener method is use of
-        // DialogInterface interface.
-
-        builder
-                .setPositiveButton(
-                        "Yes",
-                        new DialogInterface
-                                .OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-
-                                finish();
-                            }
-                        });
-
-        builder
-                .setNegativeButton(
-                        "No",
-                        new DialogInterface
-                                .OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-
-                                // If user click no
-                                // then dialog box is canceled.
-                                dialog.cancel();
-                            }
-                        });
-
-        // Create the Alert dialog
-        AlertDialog alertDialog = builder.create();
-
-        // Show the Alert Dialog box
-        alertDialog.show();
-    }
 }
-
-
