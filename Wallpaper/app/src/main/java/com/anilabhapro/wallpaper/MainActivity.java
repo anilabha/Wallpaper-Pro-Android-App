@@ -176,51 +176,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-//        if (id == R.id.nav_search) {
-//
-//            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-//            final EditText editText = new EditText(this);
-//            editText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//
-//            alert.setMessage("Enter Category Example : Nature");
-//            alert.setTitle("Search Wallpaper");
-//
-//            alert.setView(editText);
-//
-//
-//            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//
-//
-//                    String query = editText.getText().toString();
-//
-//                    if (query.isEmpty() == false) {
-//
-//                        url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
-//                        wallpaperModelList.clear();
-//                        fetchWallpaper();
-//                    } else {
-//                        Toast.makeText(getApplicationContext(), "Please Give a Search input!", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//
-//
-//                }
-//            });
-//
-//
-//            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                }
-//            });
-//
-//            alert.show();
-//
-//
-//        }
+
         if (id == R.id.info) {
             startActivity(new Intent(MainActivity.this, Info.class));
 
