@@ -42,6 +42,15 @@
         android:title="Animal Wallpaper"
         android:id="@+id/cat5"
         app:showAsAction="ifRoom"/>
+    <item
+        android:title="Christmas Wallpaper"
+        android:id="@+id/cat6"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Halloween Wallpaper"
+        android:id="@+id/cat7"
+        app:showAsAction="ifRoom"/>
+
 
 
 </menu>

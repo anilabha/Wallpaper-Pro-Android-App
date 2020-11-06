@@ -1,28 +1,25 @@
 package com.anilabhapro.wallpaper;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.Button;
+
 import android.widget.TextView;
 
 public class Info extends AppCompatActivity {
-    @SuppressLint("WrongViewCast")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         TextView b;
-        b=findViewById(R.id.textView4);
+        b = findViewById(R.id.textView4);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
