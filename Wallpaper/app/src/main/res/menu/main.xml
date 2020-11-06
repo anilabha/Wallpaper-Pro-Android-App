@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--    <item-->
+<!--        android:icon="@drawable/ic_baseline_search_24"-->
+<!--        android:title="Search"-->
+<!--        android:id="@+id/nav_search"-->
+<!--        app:showAsAction="always"/>-->
+
+
+
+
+    <item
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="About"
+        android:id="@+id/Share"
+        app:showAsAction="always"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="About"
+        android:id="@+id/info"
+        app:showAsAction="always"/>
+    <item
+        android:title="Nature Wallpaper"
+        android:id="@+id/cat1"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Abstract Wallpaper"
+        android:id="@+id/cat2"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Car Wallpaper"
+        android:id="@+id/cat3"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Programming Wallpaper"
+        android:id="@+id/cat4"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Animal Wallpaper"
+        android:id="@+id/cat5"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Christmas Wallpaper"
+        android:id="@+id/cat6"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Halloween Wallpaper"
+        android:id="@+id/cat7"
+        app:showAsAction="ifRoom"/>
+
+
+
+</menu>
