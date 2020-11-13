@@ -4,8 +4,9 @@
  # api link : https://www.pexels.com/api/
    # Features:
 1. View different types Wallpaper.
-2. Share Wallpaper.
-3. Download original Wallpaper into local storage.
+2. Set wallpaper in your Android phone directly
+3. Share Wallpaper.
+4. Download original Wallpaper into local storage.
  
 # Screenshots
 ![Screenshot1](https://github.com/anilabha/Wallpaper_App_Android/blob/main/Screenshot_1.png) 
